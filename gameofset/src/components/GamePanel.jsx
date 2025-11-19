@@ -1,25 +1,19 @@
 import Card from './Card'
 
-function GamePanel() {
-    const nums = [1, 2, 3];
-    const colors = ["green", "purple", "red"];
-    const shapes = ["diamond", "squiggle", "oval"];
-    const bgds = ["empty", "shaded", "solid"];
-
+function GamePanel({cards}) {
     return(
         <>
         <h2>Cards</h2>
         <div className="game-panel">
-            {nums.map((num) => {
-                return colors.map((color) => {
-                    return shapes.map((shape) => {
-                        return bgds.map((bgd) => {
-                            const uniqueKey = `${num}-${color}-${shape}-${bgd}`;
-                            return <Card key={uniqueKey} num={num} color={color} shape={shape} bgd={bgd} />;
-                        });
-                    });
-                });
-            })}
+            {cards.map((card) => (
+                <Card 
+                    key={`${card.num}-${card.color}-${card.shape}-${card.bgd}`} 
+                    num={card.num} 
+                    color={card.color} 
+                    shape={card.shape} 
+                    bgd={card.bgd}
+                />
+            ))}
         </div>
         </>
     );
