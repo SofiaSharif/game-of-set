@@ -6,15 +6,63 @@
 }
 
 .game-panel {
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.game-panel .cards {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 10px;
+  padding: 10px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  border-bottom: 2px solid black;
+  border-radius: 20px 20px 0 0;
+  background-color: rgb(139, 72, 177);
+}
+
+.buttons {
+  display: flex;
+  padding: 5px;
+  gap: 5px;
+}
+
+.minimize-btn:hover {
+  background-color: rgb(227, 223, 150);
+  color: black;
+}
+
+.close-btn:hover {
+  background-color: rgb(229, 124, 124);
+  color: black;
+}
+
+.minimize-btn {
+  background-color: rgb(42, 39, 39);
+}
+
+.close-btn {
+  background-color: rgb(42, 39, 39);
 }
 
 .solutions-panel {
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.solutions-panel .cards {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  padding: 10px;
 }
 
+img {
+ border: 2px solid black;
+}

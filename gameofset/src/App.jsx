@@ -1,8 +1,14 @@
 import GamePanel from './components/GamePanel'
 import Solutions from './components/Solutions';
 import './App.css'
+import { useState } from 'react';
 
 function App() {
+  const [windows, setWindows] = useState([
+    {name: "Game Panel", isMinimized: false, isVisible: true},
+    {name: "Solutions Panel", isMinimized: false, isVisible: true}
+  ]);
+
   const nums = [1, 2, 3];
   const colors = ["green", "purple", "red"];
   const shapes = ["diamond", "squiggle", "oval"];
@@ -96,12 +102,30 @@ function App() {
     }
   }
 
+  const onMinimize = (name) => {
+      setWindows(prevWindows =>
+        prevWindows.map(window =>
+          window.name === name
+            ? {...window, isMinimized: !window.isMinimized} : window
+        )
+      );
+  }
+
+  const onClose = (name) => {
+    setWindows(prevWindows =>
+      prevWindows.map(window =>
+        window.name === name
+          ? {...window, isVisible: !window.isVisible} : window
+      )
+    );
+  }
+
   return (
     <>
-      <GamePanel cards={cards}/>
+      <GamePanel cards={cards} isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
       <h3>Number of Checks: {numChecks}</h3>
       <h3>Number of Solutions: {allSols.length}</h3>
-      <Solutions solutions={allSols}/>
+      <Solutions solutions={allSols} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
     </>
   )
 }
