@@ -3,7 +3,7 @@ import Header from './Header';
 import Draggable from 'react-draggable';
 import { useRef } from 'react';
 
-function Solutions({solutions, isMinimized, onMinimize, onClose}) {
+function Solutions({solutions, numChecks, isMinimized, onMinimize, onClose}) {
     const style = {display: isMinimized ? "none" : "grid"};
     const nodeRef = useRef(null);
 
@@ -11,6 +11,8 @@ function Solutions({solutions, isMinimized, onMinimize, onClose}) {
         <Draggable nodeRef={nodeRef} handle=".header">
             <div ref={nodeRef} className="solutions-panel">
                 <Header isMinimized={isMinimized} title="Solutions" onMinimize={() => onMinimize("Solutions Panel")} onClose={() => onClose("Solutions Panel")}/>
+                <h3>Number of Checks: {numChecks}</h3>
+                <h3>Number of Solutions: {solutions.length}</h3>
                 <div className='cards' style={style}>
                     {solutions.map((sol) => (
                         sol.map((card) => (

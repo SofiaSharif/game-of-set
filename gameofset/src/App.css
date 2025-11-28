@@ -8,11 +8,12 @@
 .game-panel {
   border: 2px solid black;
   border-radius: 20px;
+  width: fit-content;
 }
 
 .game-panel .cards {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 10px;
 }
@@ -54,6 +55,7 @@
 .solutions-panel {
   border: 2px solid black;
   border-radius: 20px;
+  width: fit-content;
 }
 
 .solutions-panel .cards {
@@ -62,6 +64,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   padding: 10px;
+}
+
+.solutions-panel h3 {
+  margin: 0px;
+  padding: 2px;
 }
 
 img {
