@@ -25,6 +25,10 @@
   padding: 10px;
 }
 
+.game-panel .header {
+  min-width: 450px;
+}
+
 .header {
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -63,6 +67,7 @@
   border: 2px solid black;
   border-radius: 20px;
   width: fit-content;
+  height: fit-content;
 }
 
 .solutions-panel .cards {
@@ -76,6 +81,10 @@
 .solutions-panel h3 {
   margin: 0px;
   padding: 2px;
+}
+
+.solutions-panel .header {
+  min-width: 330px;
 }
 
 .game-btns-panel {
