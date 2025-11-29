@@ -5,10 +5,17 @@
   text-align: center;
 }
 
+#game-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .game-panel {
   border: 2px solid black;
   border-radius: 20px;
   width: fit-content;
+  height: fit-content;
 }
 
 .game-panel .cards {
@@ -71,6 +78,32 @@
   padding: 2px;
 }
 
+.game-btns-panel {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.game-btn-container {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  justify-content: center;
+}
+
+.game-btns-panel button {
+  display: flex;
+  justify-self: center;
+  width: 80%;
+}
+
+.game-btn-container button:hover {
+  background-color: rgb(49, 16, 69)
+}
+
 img {
- border: 2px solid black;
+  border: 2px solid black;
 }
