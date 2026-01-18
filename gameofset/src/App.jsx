@@ -95,6 +95,8 @@ function App() {
     }
   };
 
+  const getCardId = (c) => `${c.num}-${c.color}-${c.shape}-${c.bgd}`;
+
   const checkId = ((firstCard, secondCard, thirdCard, incrementChecks) => {
     incrementChecks();
     if ((firstCard !== secondCard) && (firstCard !== thirdCard) && (secondCard !== thirdCard)){
@@ -192,12 +194,30 @@ function App() {
     setSelectedCards([]);
   }
 
+  const getNotFoundSols = () => {
+    return allSols.filter(sol => {
+    const solId = sol.map(getCardId).sort().join('|');
+
+    return !foundSols.some(found => 
+        found.map(getCardId).sort().join('|') === solId
+    );
+    });
+  }
+
   const onHint1 = () => {
-    return;
+    const notFoundSols = getNotFoundSols();
+    if (notFoundSols.length > 0) {
+      const hintSol = notFoundSols[0];
+      setSelectedCards([hintSol[0]]);
+    }
   }
 
   const onHint2 = () => {
-    return;
+    const notFoundSols = getNotFoundSols();
+    if (notFoundSols.length > 0) {
+      const hintSol = notFoundSols[0];
+      setSelectedCards([hintSol[0], hintSol[1]]);
+    }
   }
 
   const handleCardClick = (clickedCard) => {
