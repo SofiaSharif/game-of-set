@@ -1,6 +1,9 @@
 function Card(props) {
     return (
-        <img src={`src/assets/newcards/${props.num}-${props.color}-${props.shape}-${props.bgd}.gif`}></img>
+        <img onClick={props.onClick}
+             className={props.isSelected ? "card-selected" : "card"} 
+             src={`src/assets/newcards/${props.num}-${props.color}-${props.shape}-${props.bgd}.gif`}
+        />
     );
 }
 

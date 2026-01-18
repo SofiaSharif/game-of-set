@@ -35,12 +35,20 @@ function App() {
   ]);
 
   const [gameCards, setGameCards] = useState([]);
+  const [selectedCards, setSelectedCards] = useState([]);
   const [allSols, setAllSols] = useState([]);
+  const [foundSols, setFoundSols] = useState([]);
   const [numChecks, setNumChecks] = useState(0);
 
   useEffect(() => {
     onNewGame();
   }, []);
+
+  useEffect(() => {
+    if (selectedCards.length === 3) {
+      validateSelection(selectedCards);
+    }
+  }, [selectedCards]);
 
   const getDeck = () => {
     let deckCopy = [...ALL_CARDS];
@@ -65,6 +73,27 @@ function App() {
     return false;
   });
 
+  const validateSelection = (currentSelection) => {
+    const getCardId = (c) => `${c.num}-${c.color}-${c.shape}-${c.bgd}`;
+    const selectionIds = currentSelection.map(getCardId).sort();
+
+    const isCorrect = allSols.some(sol => {
+      const solIds = sol.map(getCardId).sort();
+      return solIds.every((id, index) => id === selectionIds[index]);
+    });
+
+    const alreadyFound = foundSols.some(foundSet => {
+        const foundIds = foundSet.map(getCardId).sort();
+        return foundIds.every((id, index) => id === selectionIds[index]);
+    });
+
+    if (isCorrect && !alreadyFound) {
+      setFoundSols(prev => [...prev, currentSelection]);
+      setSelectedCards([]);
+    } else {
+      setSelectedCards([]);
+    }
+  };
 
   const checkId = ((firstCard, secondCard, thirdCard, incrementChecks) => {
     incrementChecks();
@@ -159,6 +188,8 @@ function App() {
     setGameCards(newDeck);
     setAllSols(newSols.allSols);
     setNumChecks(newSols.checks);
+    setFoundSols([]);
+    setSelectedCards([]);
   }
 
   const onHint1 = () => {
@@ -169,11 +200,34 @@ function App() {
     return;
   }
 
+  const handleCardClick = (clickedCard) => {
+    setSelectedCards((prevSelected) => {
+      const isAlreadySelected = prevSelected.some(
+        (c) => c.num === clickedCard.num && 
+              c.color === clickedCard.color && 
+              c.shape === clickedCard.shape && 
+              c.bgd === clickedCard.bgd
+      );
+
+      if (isAlreadySelected) {
+        return prevSelected.filter(
+          (c) => !(c.num === clickedCard.num && c.color === clickedCard.color && c.shape === clickedCard.shape && c.bgd === clickedCard.bgd)
+        );
+      }
+
+      if (prevSelected.length >= 3) {
+        return prevSelected;
+      }
+
+      return [...prevSelected, clickedCard];
+    });
+  };
+
   return (
     <div id="game-container">
       <GameButtons isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
-      <GamePanel cards={gameCards} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
-      <Solutions solutions={allSols} numChecks={numChecks} isMinimized={windows[2].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
+      <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
+      <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
     </div>
   )
 }

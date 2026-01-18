@@ -70,14 +70,6 @@
   height: fit-content;
 }
 
-.solutions-panel .cards {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 10px;
-}
-
 .solutions-panel h3 {
   margin: 0px;
   padding: 2px;
@@ -115,4 +107,29 @@
 
 img {
   border: 2px solid black;
+}
+
+.card {
+  border: 2px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-selected {
+    transform: translate(3px, 3px);
+    box-shadow: 
+        inset 4px 4px 6px rgba(0, 0, 0, 0.5),
+        0px 0px 6px rgba(255, 255, 255, 0.9);
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.solution-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin: 10px;
+  background: rgba(165, 152, 165, 0.603);
+  border-radius: 8px;
+  border: 1px dashed #666;
 }

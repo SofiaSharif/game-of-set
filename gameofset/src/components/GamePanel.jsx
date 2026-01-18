@@ -3,7 +3,7 @@ import Header from './Header';
 import Draggable from 'react-draggable';
 import { useRef } from 'react';
 
-function GamePanel({cards, isMinimized, onMinimize, onClose}) {
+function GamePanel({cards, selectedCards, onCardClick, isMinimized, onMinimize, onClose}) {
     const style = {display: isMinimized ? "none" : "grid"};
     const nodeRef = useRef(null);
 
@@ -20,6 +20,8 @@ function GamePanel({cards, isMinimized, onMinimize, onClose}) {
                             color={card.color} 
                             shape={card.shape} 
                             bgd={card.bgd}
+                            isSelected={selectedCards.includes(card)}
+                            onClick={() => onCardClick(card)}
                         />
                     ))}
                 </div>
