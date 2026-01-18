@@ -244,11 +244,14 @@ function App() {
   };
 
   return (
-    <div id="game-container">
-      <GameButtons isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
-      <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
-      <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
-    </div>
+    <>
+      <h1>Game of Set</h1>
+      <div id="game-container">
+        <GameButtons isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
+        <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
+        <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
+      </div>
+    </>
   )
 }
 

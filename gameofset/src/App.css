@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+h1 {
+  text-decoration: underline;
+  color: black;
+  padding: 20px;
+}
+
 #game-container {
   display: flex;
   flex-direction: row;
@@ -16,6 +22,7 @@
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
+  background-color: #656161;
 }
 
 .game-panel .cards {
@@ -68,6 +75,7 @@
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
+  background-color: #656161;
 }
 
 .solutions-panel h3 {
@@ -86,6 +94,7 @@
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
+  background-color: #656161;
 }
 
 .game-btn-container {
