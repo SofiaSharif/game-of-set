@@ -1,4 +1,4 @@
-function Header({title, isMinimized, onMinimize, onClose}) {
+function PanelHeader({title, isMinimized, onMinimize, onClose}) {
     const style = {borderRadius: isMinimized ? "20px" : "20px 20px 0 0"};
 
     return(
@@ -12,4 +12,4 @@ function Header({title, isMinimized, onMinimize, onClose}) {
     );
 }
 
-export default Header;
+export default PanelHeader;

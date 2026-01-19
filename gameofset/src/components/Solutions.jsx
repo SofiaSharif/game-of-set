@@ -1,5 +1,5 @@
 import Card from './Card'
-import Header from './Header';
+import PanelHeader from './PanelHeader';
 import Draggable from 'react-draggable';
 import { useRef } from 'react';
 
@@ -10,7 +10,7 @@ function Solutions({solutions, numSols, numChecks, isMinimized, onMinimize, onCl
     return(
         <Draggable nodeRef={nodeRef} handle=".header">
             <div ref={nodeRef} className="solutions-panel">
-                <Header isMinimized={isMinimized} title="Solutions" onMinimize={() => onMinimize("Solutions Panel")} onClose={() => onClose("Solutions Panel")}/>
+                <PanelHeader isMinimized={isMinimized} title="Solutions" onMinimize={() => onMinimize("Solutions Panel")} onClose={() => onClose("Solutions Panel")}/>
                 <div className='solutions-container' style={style}>
                     <h3>Number of Checks: {numChecks}</h3>
                     <h3>Solutions Found: {solutions.length} of {numSols}</h3>

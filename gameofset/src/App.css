@@ -1,8 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: none;
   text-align: center;
+  width: 100vw;
 }
 
 h1 {
@@ -11,13 +10,33 @@ h1 {
   padding: 20px;
 }
 
+.page-header {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background-color: rgb(139, 72, 177);
+  width: 100%;
+}
+
+.page-header button {
+  margin: 10px;
+}
+
+.page-header button:hover {
+  background-color: rgb(49, 16, 69);
+}
+
 #game-container {
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .game-panel {
+  display: flex;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 20px;
   width: fit-content;
@@ -46,6 +65,10 @@ h1 {
   padding-left: 10px;
 }
 
+.header:hover {
+  cursor: grab;
+}
+
 .buttons {
   display: flex;
   padding: 5px;
@@ -71,6 +94,8 @@ h1 {
 }
 
 .solutions-panel {
+  display: flex;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 20px;
   width: fit-content;

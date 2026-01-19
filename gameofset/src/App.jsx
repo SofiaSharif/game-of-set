@@ -3,6 +3,7 @@ import Solutions from './components/Solutions';
 import './App.css'
 import { useEffect, useState } from 'react';
 import GameButtons from './components/GameButtons';
+import PageHeader from './components/PageHeader';
 
 const nums = [1, 2, 3];
 const colors = ["green", "purple", "red"];
@@ -245,6 +246,7 @@ function App() {
 
   return (
     <>
+      <PageHeader/>
       <h1>Game of Set</h1>
       <div id="game-container">
         <GameButtons isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
