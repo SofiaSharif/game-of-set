@@ -3,16 +3,17 @@ import PanelHeader from './PanelHeader';
 import Draggable from 'react-draggable';
 import { useRef } from 'react';
 
-function GamePanel({cards, selectedCards, onCardClick, isMinimized, onMinimize, onClose}) {
-    const style = {display: isMinimized ? "none" : "grid"};
+function GamePanel({cards, selectedCards, onCardClick, isMinimized, isVisible, onMinimize, onClose}) {
+    const container_style = {display: isMinimized ? "none" : "grid"};
+    const panel_style = {display: isVisible ? "flex" : "none"};
     const nodeRef = useRef(null);
 
     return(
         <>
         <Draggable nodeRef={nodeRef} handle=".header">
-            <div ref={nodeRef} className="game-panel">
+            <div ref={nodeRef} className="game-panel" style={panel_style}>
                 <PanelHeader isMinimized={isMinimized} title="Cards" onMinimize={() => onMinimize("Game Panel")} onClose={() => onClose("Game Panel")}/>
-                <div id="cards" className="cards" style={style}>
+                <div id="cards" className="cards" style={container_style}>
                     {cards.map((card) => (
                         <Card 
                             key={`${card.num}-${card.color}-${card.shape}-${card.bgd}`} 

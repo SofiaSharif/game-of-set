@@ -4,6 +4,8 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import GameButtons from './components/GameButtons';
 import PageHeader from './components/PageHeader';
+import About from './components/About';
+
 
 const nums = [1, 2, 3];
 const colors = ["green", "purple", "red"];
@@ -32,7 +34,8 @@ function App() {
   const [windows, setWindows] = useState([
     {name: "Game Buttons", isMinimized: false, isVisible: true},
     {name: "Game Panel", isMinimized: false, isVisible: true},
-    {name: "Solutions Panel", isMinimized: false, isVisible: true}
+    {name: "Solutions Panel", isMinimized: false, isVisible: true},
+    {name: "About Panel", isMinimized: false, isVisible: false},
   ]);
 
   const [gameCards, setGameCards] = useState([]);
@@ -246,12 +249,13 @@ function App() {
 
   return (
     <>
-      <PageHeader/>
+      <PageHeader onClose={onClose}/>
       <h1>Game of Set</h1>
       <div id="game-container">
-        <GameButtons isMinimized={windows[0].isMinimized} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
-        <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
-        <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} onMinimize={onMinimize} onClose={onClose}/>
+        <GameButtons isMinimized={windows[0].isMinimized} isVisible={windows[0].isVisible} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
+        <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} isVisible={windows[1].isVisible} onMinimize={onMinimize} onClose={onClose}/>
+        <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} isVisible={windows[2].isVisible} onMinimize={onMinimize} onClose={onClose}/>
+        <About isMinimized={windows[3].isMinimized} isVisible={windows[3].isVisible} onMinimize={onMinimize} onClose={onClose}/>
       </div>
     </>
   )
