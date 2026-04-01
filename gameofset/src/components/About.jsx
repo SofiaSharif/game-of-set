@@ -18,9 +18,9 @@ function About({ isMinimized, isVisible, onMinimize, onClose}) {
                     <p>Constraint Systems Laboratory © 2026</p>
                     <p>Supported by multiple NSF REU supplements and UNL UCARE grants.</p>
                     <div className="about-logos">
-                        <img id="consystlab-logo" src='src/assets/images/consystlab-logo.png'></img>
-                        <img id="nebraska-logo" src='src/assets/images/nebraska.png'></img>
-                        <img id="nsf-logo" src='src/assets/images/nsf.png'></img>
+                        <img id="consystlab-logo" src='/images/consystlab-logo.png'></img>
+                        <img id="nebraska-logo" src='/images/nebraska.png'></img>
+                        <img id="nsf-logo" src='/images/nsf.png'></img>
                     </div>
                 </div>
             </div>
