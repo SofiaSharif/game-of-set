@@ -33,7 +33,7 @@ h1 {
   gap: 10px;
 }
 
-.game-panel, .solutions-panel, .game-btns-panel, .about-panel {
+.game-panel, .solutions-panel, .game-btns-panel, .upload-panel, .about-panel {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
@@ -192,4 +192,31 @@ h1 {
 #nsf-logo {
   width: 80px;
   height: auto;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+#input-image {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: rgb(49, 16, 69);
 }

@@ -4,6 +4,7 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import GameButtons from './components/GameButtons';
 import PageHeader from './components/PageHeader';
+import ImageUploader from './components/ImageUploader';
 import About from './components/About';
 
 
@@ -35,6 +36,7 @@ function App() {
     {name: "Game Buttons", isMinimized: false, isVisible: true},
     {name: "Game Panel", isMinimized: false, isVisible: true},
     {name: "Solutions Panel", isMinimized: false, isVisible: true},
+    {name: "Upload Panel", isMinimized: false, isVisible: false},
     {name: "About Panel", isMinimized: false, isVisible: false},
   ]);
 
@@ -247,6 +249,10 @@ function App() {
     });
   };
 
+  const onImageUpload = (detectedDeck) => {
+    console.log("Image uploaded:", detectedDeck);
+  }
+
   return (
     <>
       <PageHeader onClose={onClose}/>
@@ -255,7 +261,8 @@ function App() {
         <GameButtons isMinimized={windows[0].isMinimized} isVisible={windows[0].isVisible} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
         <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} isVisible={windows[1].isVisible} onMinimize={onMinimize} onClose={onClose}/>
         <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} isVisible={windows[2].isVisible} onMinimize={onMinimize} onClose={onClose}/>
-        <About isMinimized={windows[3].isMinimized} isVisible={windows[3].isVisible} onMinimize={onMinimize} onClose={onClose}/>
+        <ImageUploader isMinimized={windows[3].isMinimized} isVisible={windows[3].isVisible} onMinimize={onMinimize} onClose={onClose} onImageUpload={onImageUpload}/>
+        <About isMinimized={windows[4].isMinimized} isVisible={windows[4].isVisible} onMinimize={onMinimize} onClose={onClose}/>
       </div>
     </>
   )
