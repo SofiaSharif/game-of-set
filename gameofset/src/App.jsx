@@ -192,8 +192,7 @@ function App() {
     );
   }
 
-  const onNewGame = () => {
-    const newDeck = getDeck();
+  const onNewGame = (newDeck = getDeck()) => {
     const newSols = generateSolutions(newDeck);
     setGameCards(newDeck);
     setAllSols(newSols.allSols);
@@ -255,21 +254,18 @@ function App() {
     console.log("Image uploaded:", detectedDeck);
   }
 
-  const onEditDeck = (editedCards) => {
-    setGameCards(editedCards);
-  }
 
   return (
     <>
       <PageHeader onClose={onClose}/>
       <h1>Game of Set</h1>
       <div id="game-container">
-        <GameButtons isMinimized={windows[0].isMinimized} isVisible={windows[0].isVisible} onMinimize={onMinimize} onClose={onClose} onNewGame={onNewGame} onHint1={onHint1} onHint2={onHint2}/>
+        <GameButtons isMinimized={windows[0].isMinimized} isVisible={windows[0].isVisible} onMinimize={onMinimize} onClose={onClose} onNewGame={() => onNewGame(getDeck())} onHint1={onHint1} onHint2={onHint2}/>
         <GamePanel cards={gameCards} selectedCards={selectedCards} onCardClick={handleCardClick} isMinimized={windows[1].isMinimized} isVisible={windows[1].isVisible} onMinimize={onMinimize} onClose={onClose}/>
         <Solutions solutions={foundSols} numSols={allSols.length} numChecks={numChecks} isMinimized={windows[2].isMinimized} isVisible={windows[2].isVisible} onMinimize={onMinimize} onClose={onClose}/>
         <ImageUploader isMinimized={windows[3].isMinimized} isVisible={windows[3].isVisible} onMinimize={onMinimize} onClose={onClose} onImageUpload={onImageUpload}/>
         <About isMinimized={windows[5].isMinimized} isVisible={windows[5].isVisible} onMinimize={onMinimize} onClose={onClose}/>
-        <EditDeckPanel cards={gameCards} isMinimized={windows[4].isMinimized} isVisible={windows[4].isVisible} onMinimize={onMinimize} onClose={onClose} onEditDeck={onEditDeck}/>
+        <EditDeckPanel cards={gameCards} isMinimized={windows[4].isMinimized} isVisible={windows[4].isVisible} onMinimize={onMinimize} onClose={onClose} onEditDeck={onNewGame}/>
       </div>
     </>
   )
