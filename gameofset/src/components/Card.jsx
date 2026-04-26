@@ -1,3 +1,5 @@
+import React, { memo } from 'react';
+
 function Card(props) {
     return (
         <img onClick={props.onClick}
@@ -7,4 +9,4 @@ function Card(props) {
     );
 }
 
-export default Card;
+export default memo(Card);
