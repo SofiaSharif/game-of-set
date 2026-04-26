@@ -39,7 +39,7 @@ function EditDeckPanel({cards, onCardClick, isMinimized, isVisible, onMinimize, 
                     <PanelHeader isMinimized={isMinimized} title="Edit Deck" onMinimize={() => onMinimize("Edit Deck Panel")} onClose={() => onClose("Edit Deck Panel")}/>
                     <div className="deck-grid-editor" style={container_style}>
                         {draftCards.map((card, index) => (
-                            <div key={`${card.num}-${card.color}-${card.shape}-${card.bgd}`} className="card-edit-row">
+                            <div key={`card-${index}`} className="card-edit-row">
                                 <span>Card {index + 1}:</span>
 
                                 <select value={card.num} onChange={(e) => handleSelectChange(index, "num", parseInt(e.target.value))}>
