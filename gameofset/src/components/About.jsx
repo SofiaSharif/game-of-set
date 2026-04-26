@@ -8,7 +8,7 @@ function About({ isMinimized, isVisible, onMinimize, onClose}) {
     const nodeRef = useRef(null);
     
     return(
-        <Draggable nodeRef={nodeRef} handle='.header'>
+        <Draggable nodeRef={nodeRef} handle=".header" bounds="parent" defaultPosition={{x: -82, y: 320}}>
             <div ref={nodeRef} className="about-panel" style={panel_style}>
                 <PanelHeader isMinimized={isMinimized} title="About" onMinimize={() => onMinimize("About Panel")} onClose={() => onClose("About Panel")}/>
                 <div className="about-container" style={container_style}>

@@ -9,7 +9,7 @@ function Solutions({solutions, numSols, numChecks, isMinimized, isVisible, onMin
     const nodeRef = useRef(null);
 
     return(
-        <Draggable nodeRef={nodeRef} handle=".header">
+        <Draggable nodeRef={nodeRef} handle=".header" bounds="parent" defaultPosition={{x: 318, y: 20}}>
             <div ref={nodeRef} className="solutions-panel" style={panel_style}>
                 <PanelHeader isMinimized={isMinimized} title="Solutions" onMinimize={() => onMinimize("Solutions Panel")} onClose={() => onClose("Solutions Panel")}/>
                 <div className='solutions-container' style={container_style}>

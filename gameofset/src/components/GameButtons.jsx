@@ -8,7 +8,7 @@ function GameButtons({ isMinimized, isVisible, onMinimize, onClose, onNewGame, o
     const nodeRef = useRef(null);
     
     return(
-        <Draggable nodeRef={nodeRef} handle='.header'>
+        <Draggable nodeRef={nodeRef} handle=".header" bounds="parent" defaultPosition={{x: -399, y: 20}}>
             <div ref={nodeRef} className="game-btns-panel" style={panel_style}>
                 <PanelHeader isMinimized={isMinimized} title="Actions" onMinimize={() => onMinimize("Game Buttons")} onClose={() => onClose("Game Buttons")}/>
                 <div className="game-btn-container" style={container_style}>

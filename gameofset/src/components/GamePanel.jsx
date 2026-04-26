@@ -10,7 +10,7 @@ function GamePanel({cards, selectedCards, onCardClick, isMinimized, isVisible, o
 
     return(
         <>
-        <Draggable nodeRef={nodeRef} handle=".header">
+        <Draggable nodeRef={nodeRef} handle=".header" bounds="parent" defaultPosition={{x: -82, y: 20}}>
             <div ref={nodeRef} className="game-panel" style={panel_style}>
                 <PanelHeader isMinimized={isMinimized} title="Deck" onMinimize={() => onMinimize("Game Panel")} onClose={() => onClose("Game Panel")}/>
                 <div id="cards" className="cards" style={container_style}>

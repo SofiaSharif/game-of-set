@@ -34,7 +34,7 @@ function EditDeckPanel({cards, onCardClick, isMinimized, isVisible, onMinimize, 
 
     return(
         <>
-            <Draggable nodeRef={nodeRef} handle=".header">
+            <Draggable nodeRef={nodeRef} handle=".header" bounds="parent" defaultPosition={{x: 345, y: 220}}>
                 <div ref={nodeRef} className="edit-deck-panel" style={panel_style}>
                     <PanelHeader isMinimized={isMinimized} title="Edit Deck" onMinimize={() => onMinimize("Edit Deck Panel")} onClose={() => onClose("Edit Deck Panel")}/>
                     <div className="deck-grid-editor" style={container_style}>
